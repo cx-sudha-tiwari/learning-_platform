@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verify Email – EduAuth Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">🎓 EduAuth Platform</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" style="text-align:center; max-width:600px; margin:2rem auto">
+      <div id="verifyingState">
+        <h2>Verifying your email...</h2>
+        <p>Please wait while we verify your email address.</p>
+      </div>
+
+      <div id="successState" style="display:none">
+        <div style="font-size:4rem; margin-bottom:1rem">✅</div>
+        <h2>Email Verified!</h2>
+        <p>Your email has been successfully verified. You can now access all features.</p>
+        <a href="index.html" class="btn primary" style="margin-top:1rem">Go to Login</a>
+      </div>
+
+      <div id="errorState" style="display:none">
+        <div style="font-size:4rem; margin-bottom:1rem">❌</div>
+        <h2>Verification Failed</h2>
+        <p id="errorMessage">The verification link is invalid or has expired.</p>
+        <a href="index.html" class="btn secondary" style="margin-top:1rem">Back to Home</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted">© <span id="year"></span> EduAuth Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const API_URL = 'http://localhost:3000';
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear().toString();
+
+      const verifyingState = document.getElementById('verifyingState');
+      const successState = document.getElementById('successState');
+      const errorState = document.getElementById('errorState');
+      const errorMessage = document.getElementById('errorMessage');
+
+      // Get token from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+
+      if (!token) {
+        showError('No verification token provided');
+        return;
+      }
+
+      // Verify email
+      async function verifyEmail() {
+        try {
+          const response = await fetch(`${API_URL}/api/auth/verify-email/${token}`);
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            showSuccess();
+          } else {
+            showError(data.message || 'Verification failed');
+          }
+        } catch (error) {
+          console.error('Verification error:', error);
+          showError('Network error. Please try again.');
+        }
+      }
+
+      function showSuccess() {
+        verifyingState.style.display = 'none';
+        successState.style.display = 'block';
+      }
+
+      function showError(message) {
+        verifyingState.style.display = 'none';
+        errorState.style.display = 'block';
+        errorMessage.textContent = message;
+      }
+
+      verifyEmail();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EduAuth Platform – Registration</title>
+  <meta name="description" content="Register for EduAuth Platform - Your Learning Management System" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">🎓 EduAuth Platform</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" aria-labelledby="registration-title">
+      <h2 id="registration-title">Create your account</h2>
+      <p class="muted">Join EduAuth Platform to access courses, track progress, and enhance your learning journey.</p>
+
+      <form id="registrationForm" novalidate>
+        <div class="grid">
+          <div class="form-control">
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" name="fullName" autocomplete="name" required placeholder="Jane Doe" />
+            <small class="error" id="fullNameError"></small>
+          </div>
+
+          <div class="form-control">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required placeholder="jane@example.com" />
+            <small class="error" id="emailError"></small>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="form-control">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required minlength="8" placeholder="At least 8 characters" />
+            <small class="error" id="passwordError"></small>
+          </div>
+
+          <div class="form-control">
+            <label for="confirmPassword">Confirm password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Re-enter password" />
+            <small class="error" id="confirmPasswordError"></small>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="form-control">
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+              <option value="">Select a role…</option>
+              <option value="student">Student</option>
+              <option value="instructor">Instructor</option>
+            </select>
+            <small class="error" id="roleError"></small>
+          </div>
+
+          <div class="form-control">
+            <fieldset>
+              <legend>Areas of interest (optional)</legend>
+              <div class="checkbox-group">
+                <label><input type="checkbox" name="interests" value="web"> Web Development</label>
+                <label><input type="checkbox" name="interests" value="data"> Data Science</label>
+                <label><input type="checkbox" name="interests" value="ai"> AI / ML</label>
+                <label><input type="checkbox" name="interests" value="cloud"> Cloud</label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="form-control">
+          <label class="checkbox">
+            <input type="checkbox" id="terms" name="terms" required />
+            I agree to the Terms of Service and Privacy Policy
+          </label>
+          <small class="error" id="termsError"></small>
+        </div>
+
+        <button id="submitBtn" type="submit" class="btn primary" aria-live="polite">
+          Create account
+        </button>
+
+        <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+      </form>
+
+      <p style="text-align:center; margin-top:1.5rem">
+        Already have an account? <a href="forgot-password.html" class="muted">Forgot password?</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted">© <span id="year"></span> EduAuth Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

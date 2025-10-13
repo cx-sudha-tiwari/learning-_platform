@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard – EduAuth Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center">
+        <h1 class="brand">🎓 EduAuth Platform</h1>
+        <button id="logoutBtn" class="btn secondary">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="dashboardContent">
+      <h2>Welcome back, <span id="userName">User</span>!</h2>
+      
+      <div id="verificationBanner" class="banner warning" style="display:none">
+        <strong>⚠️ Email not verified</strong>
+        <p>Please check your inbox and verify your email address.</p>
+        <button id="resendVerificationBtn" class="btn small">Resend verification email</button>
+      </div>
+
+      <div class="profile-section">
+        <h3>Your Profile</h3>
+        <div class="profile-grid">
+          <div class="profile-item">
+            <strong>Email:</strong>
+            <span id="userEmail">-</span>
+          </div>
+          <div class="profile-item">
+            <strong>Role:</strong>
+            <span id="userRole">-</span>
+          </div>
+          <div class="profile-item">
+            <strong>Member since:</strong>
+            <span id="userCreated">-</span>
+          </div>
+          <div class="profile-item">
+            <strong>Interests:</strong>
+            <span id="userInterests">-</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions-section">
+        <h3>Quick Actions</h3>
+        <div class="action-grid">
+          <a href="#" class="action-card">
+            <h4>📚 Browse Courses</h4>
+            <p>Explore available courses</p>
+          </a>
+          <a href="#" class="action-card">
+            <h4>📊 My Progress</h4>
+            <p>Track your learning</p>
+          </a>
+          <a href="#" class="action-card">
+            <h4>⚙️ Settings</h4>
+            <p>Manage your account</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div id="loadingState" style="text-align:center; padding:3rem">
+      <p>Loading your dashboard...</p>
+    </div>
+
+    <div id="errorState" class="card" style="display:none">
+      <h2>Access Denied</h2>
+      <p>Please <a href="index.html">log in</a> to view your dashboard.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted">© <span id="year"></span> EduAuth Platform. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

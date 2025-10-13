@@ -1,0 +1,26 @@
+{
+  "name": "eduauth-platform-backend",
+  "version": "1.0.0",
+  "description": "Backend API for EduAuth Platform - Learning Management Authentication System",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["registration", "api", "express"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "better-sqlite3": "^9.2.2",
+    "express-validator": "^7.0.1",
+    "dotenv": "^16.3.1",
+    "nodemailer": "^6.9.7",
+    "express-rate-limit": "^7.1.5",
+    "crypto": "^1.0.1"
+  }
+}
